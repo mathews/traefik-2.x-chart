@@ -12,11 +12,15 @@ metadata:
     heritage: {{ .Release.Service | quote }}
 spec:
   entryPoints:
-    - web
+    - websecure
+  tls:
+    secretName: traefik-ui-tls-cert
   routes:
-  - match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+  - match: Host(`traefik.qloud.io`)  &&  ( PathPrefix(`/api`) || PathPrefix(`/dashboard`) )
     kind: Rule
     services:
     - name: api@internal
       kind: TraefikService
+    middlewares:
+      - name: dashboardbasicauth
 {{- end -}}

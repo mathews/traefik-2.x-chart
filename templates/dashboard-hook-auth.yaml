@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: dashboardbasicauth
+  annotations:
+    helm.sh/hook: "pre-install"
+spec:
+  basicAuth:
+    secret: dashboardauthsecret
+    headerField: X-WebAuth-User

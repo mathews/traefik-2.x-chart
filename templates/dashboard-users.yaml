@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dashboardauthsecret
+  annotations:
+    helm.sh/hook: "pre-install"
+data:
+  users: |2
+    YWRtaW46JGFwcjEkNkM1Q2NoeGUkd0hqMEprYzNET0NKM3Z6c3NPZXQ1LgoK
+    YWRtaW46JGFwcjEkTm9SSXNnb1ckbkNha2lBMnVlenJnWjAxYy9vVHZPMQoK

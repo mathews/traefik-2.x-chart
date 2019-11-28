@@ -45,7 +45,7 @@ ports:
     expose: true
     exposedPort: 443
 #
-# service:
+#service:
 #  externalTrafficPolicy: Cluster
 
 dashboard:
@@ -58,9 +58,12 @@ dashboard:
   ingressRoute: true
 
 logs:
-  loglevel: WARN
+  loglevel: DEBUG
+  logfile: traefik.log
+  accesslogfile: traefik-access.log
 #
-resources: {}
+resources:
+  {}
   # requests:
   #   cpu: "100m"
   #   memory: "50Mi"
@@ -69,3 +72,6 @@ resources: {}
   #   memory: "150Mi"
 nodeSelector: {}
 tolerations: []
+
+zipkin:
+  url: http://192.168.11.230:9411/api/v2/spans

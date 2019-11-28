@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: traefik-ingress-configmap
+data:
+  traefik.yaml: |
+    entryPoints:
+      web:
+        address: :{{ .Values.ports.web.port }}
+      websecure:
+        address: :{{ .Values.ports.websecure.port }}
+      ping:
+        address: :{{ .Values.ports.traefik.port }}
+    providers:
+      kubernetescrd: {}
+    api:
+      dashboard: {{ .Values.dashboard.enable }}
+    ping:
+      entryPoint: "ping"
+
+    log:
+      filePath: /app/log/{{ .Values.logs.logfile }}
+      format: json
+      level: {{ .Values.logs.loglevel }}
+    accessLog:
+      filePath: /app/log/{{ .Values.logs.accesslogfile }}
+      format: json
+    metrics:
+      prometheus:
+        buckets:
+          - 0.1
+          - 0.3
+          - 1.2
+          - 5.0
+        addEntryPointsLabels: true
+        addServicesLabels: true
+        entryPoint: web
+    tracing:
+      serviceName: traefik
+      spanNameLimit: 150
+      zipkin:
+        httpEndpoint:  {{ .Values.zipkin.url }}
+        sameSpan: true
+        id128Bit: false
