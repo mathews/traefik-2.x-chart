@@ -1,10 +1,10 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: qmsauthn
+  name: auth
 spec:
   forwardAuth:
-    address: {{ .Values.qmsauthn.address }}/oidc/profile
+    address: {{ .Values.auth.address }}
     tls:
       caOptional: true
       insecureSkipVerify: true
