@@ -76,6 +76,5 @@ tolerations: []
 zipkin:
   url: http://192.168.11.230:9411/api/v2/spans
 
-qmsauthn:
-  address: https://qmsauthn.cdit.service.sd
-
+authn:
+  address: https://auth.cluster.local
