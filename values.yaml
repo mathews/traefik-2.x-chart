@@ -74,7 +74,7 @@ nodeSelector: {}
 tolerations: []
 
 zipkin:
-  url: http://192.168.11.230:9411/api/v2/spans
+  url: http://zipkin_ip:9411/api/v2/spans
 
-authn:
-  address: https://auth.cluster.local
+auth:
+  address: https://auth_ip
