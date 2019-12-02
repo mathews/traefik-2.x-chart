@@ -20,11 +20,9 @@ data:
       entryPoint: "ping"
 
     log:
-      filePath: /app/log/{{ .Values.logs.logfile }}
       format: json
       level: {{ .Values.logs.loglevel }}
     accessLog:
-      filePath: /app/log/{{ .Values.logs.accesslogfile }}
       format: json
     metrics:
       prometheus:

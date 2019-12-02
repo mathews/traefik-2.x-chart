@@ -1,7 +1,7 @@
 # Default values for Traefik
 image:
   name: traefik
-  tag: 2.1.0-rc2
+  tag: 2.1.0-rcc
 
 #
 # Configure the deployment
@@ -75,3 +75,7 @@ tolerations: []
 
 zipkin:
   url: http://192.168.11.230:9411/api/v2/spans
+
+qmsauthn:
+  address: https://qmsauthn.cdit.service.sd
+
